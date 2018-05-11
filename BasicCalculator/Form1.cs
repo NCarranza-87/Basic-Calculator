@@ -18,6 +18,42 @@ namespace BasicCalculator
         }
 
         /// <summary>
+        /// makes the txtResult invoke ReadOnly, so that a user cannot enter an input
+        /// if the user changes txtOperand1, txtOperand2 or txtOperator; then txtResult
+        /// will become empty.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmBasicCalculator_Load(object sender, EventArgs e)
+        {
+            txtResult.ReadOnly = true;
+        }
+
+        /// <summary>
+        /// BtnExit is for when the user clicks on Exit button
+        /// and calls for the ExitApp function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            ExitApp();
+        }
+
+        /// <summary>
+        /// ExitApp() function is to prompt the user if they
+        /// wish to either exit or remain in the program
+        /// </summary>
+        private void ExitApp()
+        {
+            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (exit == DialogResult.OK)
+            {
+                Close();
+            }
+        }
+
+        /// <summary>
         /// gets the input from the user, then calls CalcuateResult() with 
         /// 3 parameters which is assigned to a variable named result. 
         /// After calculation is done, DisplayResult() is called with 
@@ -182,45 +218,52 @@ namespace BasicCalculator
             return false;
         }
 
+        
         /// <summary>
-        /// BtnExit is for when the user clicks on Exit button
-        /// and calls for the ExitApp function
+        /// check if txtOperand1, txtOperand2 and txtOperator has a text length
+        /// greater than zero and clears txtResult
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnExit_Click(object sender, EventArgs e)
+        /// <param name="textBox"></param>
+        private void ClearResult(TextBox textBox)
         {
-            ExitApp();
-        }
-
-        /// <summary>
-        /// ExitApp() function is to prompt the user if they
-        /// wish to either exit or remain in the program
-        /// </summary>
-        private void ExitApp()
-        {
-            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (exit == DialogResult.OK)
-            {
-                Close();
-            }
-        }
-
-        /// <summary>
-        /// makes the txtResult invoke ReadOnly, so that a user cannot enter an input
-        /// if the user changes txtOperand1, txtOperand2 or txtOperator; then txtResult
-        /// will become empty.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmBasicCalculator_Load(object sender, EventArgs e)
-        {
-            txtResult.ReadOnly = true;
-
-            if(txtOperand1.Text == "" || txtOperand2.Text == "" || txtOperator.Text == "")
+            if (textBox.TextLength > 0)
             {
                 txtResult.Clear();
             }
+        }
+
+
+        /// <summary>
+        /// calls ClearResult() when the user changes 
+        /// input in txtOperand1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtOperand1_TextChanged(object sender, EventArgs e)
+        {
+            ClearResult(txtOperand1);
+        }
+
+        /// <summary>
+        /// calls ClearResult() when the user changes
+        /// input in txtOperator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtOperator_TextChanged(object sender, EventArgs e)
+        {
+            ClearResult(txtOperator);
+        }
+
+        /// <summary>
+        /// callls ClearResult() when the user changes
+        /// input in txtOperand2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtOperand2_TextChanged(object sender, EventArgs e)
+        {
+            ClearResult(txtOperand2);
         }
     }
 }
