@@ -87,7 +87,7 @@
             // 
             this.txtOperator.Location = new System.Drawing.Point(123, 78);
             this.txtOperator.Name = "txtOperator";
-            this.txtOperator.Size = new System.Drawing.Size(100, 20);
+            this.txtOperator.Size = new System.Drawing.Size(23, 20);
             this.txtOperator.TabIndex = 5;
             // 
             // txtOperand2
@@ -141,6 +141,7 @@
             this.Controls.Add(this.lblOperand1);
             this.Name = "frmBasicCalculator";
             this.Text = "Basic Calculator";
+            this.Load += new System.EventHandler(this.frmBasicCalculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,28 +17,92 @@ namespace BasicCalculator
             InitializeComponent();
         }
 
+        /// <summary>
+        /// gets the input from the user, then calls CalcuateResult() with 
+        /// 3 parameters which is assigned to a variable named result. 
+        /// After calculation is done, DisplayResult() is called with 
+        /// 2 parameters to display the result from the calculation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCalculate_Click(object sender, EventArgs e)
         {
+            if (IsDataValid())
+            {
+                decimal operand1 = Convert.ToDecimal(txtOperand1.Text);
+                string mathOperator = Convert.ToString(txtOperator.Text);
+                decimal operand2 = Convert.ToDecimal(txtOperand2.Text);
 
+                decimal result = CalculateResult(operand1, mathOperator, operand2);
+
+                DisplayResult(result);
+            }
+        }
+
+        /// <summary>
+        /// when BtnCalculate is executed, DisplayResult is called to
+        /// display the result of the calculation in txtResult
+        /// </summary>
+        /// <param name="result"></param>
+        private void DisplayResult(decimal result)
+        {
+            txtResult.Text = Convert.ToString(result.ToString("#.####"));
+        }
+
+        private decimal CalculateResult(decimal operand1, string mathOperator, decimal operand2)
+        {
+            decimal total = 0;
+            if(mathOperator == "+")
+            {
+                total = operand1 + operand2;
+            }
+
+            if(mathOperator == "-")
+            {
+                total = operand1 - operand2;
+            }
+
+            if(mathOperator == "*")
+            {
+                total = operand1 * operand2;
+            }
+
+            if(mathOperator == "/")
+            {
+                total = operand1 / operand2;
+            }
+            return total;
         }
 
         /// <summary>
         /// checks that there is a valid mathematical operation
         /// </summary>
         /// <returns></returns>
-        private string IsOperator()
+        private bool IsOperator()
         {
-        }
 
-        private bool IsOperatorPresent(TextBox operationBox, string mathOperation)
-        {
-            bool hasOperation;
-
-            if(hasOperation.Equals())
+            if(IsOperatorPresent(txtOperator))
             {
                 return true;
             }
+
             return false;
+        }
+
+        private bool IsOperatorPresent(TextBox operationBox)
+        {  
+
+            if(operationBox.Text == "+" || operationBox.Text == "-"
+                || operationBox.Text == "*" || operationBox.Text == "/")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("You entered an invalid math operation.");
+                return false;
+            }
+            
         }
         /// <summary>
         /// check that there is data present with in each textbox
@@ -55,6 +119,13 @@ namespace BasicCalculator
             return true;
         }
 
+        /// <summary>
+        /// check if the user input is valid for operandInput1 and
+        /// operandInput2; also checks that the input is within range
+        /// of 0 and 1,000,000
+        /// </summary>
+        /// <returns>isDataValid is retured ture or false based
+        /// on if the user has the correct input</returns>
         private bool IsDataValid()
         {
             //get the user input
@@ -72,8 +143,11 @@ namespace BasicCalculator
                 {
                     isDataValid = true;
                 }
+                else
+                {
+                    MessageBox.Show("You have entered invalid oerands and cannot calculate.");
+                }
             }
-
             return isDataValid;
         }
 
@@ -108,30 +182,6 @@ namespace BasicCalculator
             return false;
         }
 
-        /******************************************************
-         * these are the function for the operations
-         * that a user decides to use for any given calcultion
-         *****************************************************/
-        private double addOperation()
-        {
-            return 0;
-        }
-
-        private double subtractOperation()
-        {
-            return 0;
-        }
-
-        private double multiplyOperation()
-        {
-            return 0;
-        }
-
-        private double divideOperation()
-        {
-            return 0;
-        }
-
         /// <summary>
         /// BtnExit is for when the user clicks on Exit button
         /// and calls for the ExitApp function
@@ -149,12 +199,28 @@ namespace BasicCalculator
         /// </summary>
         private void ExitApp()
         {
-            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?", MessageBoxButtons.OKCancel,
-                            MessageBoxIcon.Question);
+            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (exit == DialogResult.OK)
             {
                 Close();
             }
-        }  
+        }
+
+        /// <summary>
+        /// makes the txtResult invoke ReadOnly, so that a user cannot enter an input
+        /// if the user changes txtOperand1, txtOperand2 or txtOperator; then txtResult
+        /// will become empty.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmBasicCalculator_Load(object sender, EventArgs e)
+        {
+            txtResult.ReadOnly = true;
+
+            if(txtOperand1.Text == "" || txtOperand2.Text == "" || txtOperator.Text == "")
+            {
+                txtResult.Clear();
+            }
+        }
     }
 }
