@@ -46,7 +46,9 @@ namespace BasicCalculator
         /// </summary>
         private void ExitApp()
         {
-            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult exit = MessageBox.Show("Are you sure?", "Quit?",
+                                            MessageBoxButtons.OKCancel,
+                                            MessageBoxIcon.Question);
             if (exit == DialogResult.OK)
             {
                 Close();
@@ -85,27 +87,36 @@ namespace BasicCalculator
             txtResult.Text = Convert.ToString(result.ToString("#.####"));
         }
 
+        /// <summary>
+        /// when BtnCalculate is executed, CalculateResult is called
+        /// and is assigned to a veriable in BtnCalculate named result
+        /// to be used as a parameter in the DisplayResult()
+        /// </summary>
+        /// <param name="operand1"></param>
+        /// <param name="mathOperator"></param>
+        /// <param name="operand2"></param>
+        /// <returns>total is returned when the correpsonding calculation is complete</returns>
         private decimal CalculateResult(decimal operand1, string mathOperator, decimal operand2)
         {
             decimal total = 0;
-            if(mathOperator == "+")
-            {
-                total = operand1 + operand2;
-            }
 
-            if(mathOperator == "-")
+            switch (mathOperator)
             {
-                total = operand1 - operand2;
-            }
-
-            if(mathOperator == "*")
-            {
-                total = operand1 * operand2;
-            }
-
-            if(mathOperator == "/")
-            {
-                total = operand1 / operand2;
+                case "+":
+                    total = operand1 + operand2;
+                    break;
+                case "-":
+                    total = operand1 - operand2;
+                    break;
+                case "*":
+                    total = operand1 * operand2;
+                    break;
+                case "/":
+                    total = operand1 / operand2;
+                    break;
+                default:
+                    MessageBox.Show("You must enter a valid math operation");
+                    break;
             }
             return total;
         }

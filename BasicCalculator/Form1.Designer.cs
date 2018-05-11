@@ -43,7 +43,7 @@
             // lblOperand1
             // 
             this.lblOperand1.AutoSize = true;
-            this.lblOperand1.Location = new System.Drawing.Point(46, 49);
+            this.lblOperand1.Location = new System.Drawing.Point(62, 43);
             this.lblOperand1.Name = "lblOperand1";
             this.lblOperand1.Size = new System.Drawing.Size(60, 13);
             this.lblOperand1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // lblOperator
             // 
             this.lblOperator.AutoSize = true;
-            this.lblOperator.Location = new System.Drawing.Point(46, 78);
+            this.lblOperator.Location = new System.Drawing.Point(62, 72);
             this.lblOperator.Name = "lblOperator";
             this.lblOperator.Size = new System.Drawing.Size(51, 13);
             this.lblOperator.TabIndex = 1;
@@ -61,7 +61,7 @@
             // lblOperand2
             // 
             this.lblOperand2.AutoSize = true;
-            this.lblOperand2.Location = new System.Drawing.Point(46, 112);
+            this.lblOperand2.Location = new System.Drawing.Point(62, 106);
             this.lblOperand2.Name = "lblOperand2";
             this.lblOperand2.Size = new System.Drawing.Size(60, 13);
             this.lblOperand2.TabIndex = 2;
@@ -70,7 +70,7 @@
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(46, 152);
+            this.lblResult.Location = new System.Drawing.Point(62, 146);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(40, 13);
             this.lblResult.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // txtOperand1
             // 
-            this.txtOperand1.Location = new System.Drawing.Point(123, 49);
+            this.txtOperand1.Location = new System.Drawing.Point(139, 43);
             this.txtOperand1.Name = "txtOperand1";
             this.txtOperand1.Size = new System.Drawing.Size(100, 20);
             this.txtOperand1.TabIndex = 4;
@@ -86,7 +86,7 @@
             // 
             // txtOperator
             // 
-            this.txtOperator.Location = new System.Drawing.Point(123, 78);
+            this.txtOperator.Location = new System.Drawing.Point(139, 72);
             this.txtOperator.Name = "txtOperator";
             this.txtOperator.Size = new System.Drawing.Size(23, 20);
             this.txtOperator.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // txtOperand2
             // 
-            this.txtOperand2.Location = new System.Drawing.Point(122, 109);
+            this.txtOperand2.Location = new System.Drawing.Point(138, 103);
             this.txtOperand2.Name = "txtOperand2";
             this.txtOperand2.Size = new System.Drawing.Size(100, 20);
             this.txtOperand2.TabIndex = 6;
@@ -102,14 +102,14 @@
             // 
             // txtResult
             // 
-            this.txtResult.Location = new System.Drawing.Point(122, 145);
+            this.txtResult.Location = new System.Drawing.Point(138, 139);
             this.txtResult.Name = "txtResult";
             this.txtResult.Size = new System.Drawing.Size(100, 20);
             this.txtResult.TabIndex = 7;
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(49, 183);
+            this.btnCalculate.Location = new System.Drawing.Point(65, 177);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(75, 23);
             this.btnCalculate.TabIndex = 8;
@@ -119,7 +119,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(147, 182);
+            this.btnExit.Location = new System.Drawing.Point(163, 176);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 9;
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 237);
+            this.ClientSize = new System.Drawing.Size(306, 244);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txtResult);
@@ -142,6 +142,7 @@
             this.Controls.Add(this.lblOperand2);
             this.Controls.Add(this.lblOperator);
             this.Controls.Add(this.lblOperand1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmBasicCalculator";
             this.Text = "Basic Calculator";
             this.Load += new System.EventHandler(this.frmBasicCalculator_Load);
